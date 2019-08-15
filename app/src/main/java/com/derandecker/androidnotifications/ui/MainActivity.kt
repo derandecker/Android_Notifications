@@ -38,12 +38,11 @@ class MainActivity : AppCompatActivity() {
             }
 
             val notificationBuilder = NotificationCompat.Builder(this, channelId)
-                .setPriority(NotificationManager.IMPORTANCE_HIGH)
+                .setPriority(NotificationManager.IMPORTANCE_LOW)
                 .setContentTitle("High Importance")
                 .setContentText("High Importance Notification - Deran Decker")
                 .setSmallIcon(android.R.drawable.ic_dialog_info)
-                .setColor(Color.RED)
-                .setColorized(true)
+                .setColor(Color.GREEN)
                 .setDefaults(DEFAULT_ALL)
 
             notificationManager.notify(NOTIFICATION_ID, notificationBuilder.build())
