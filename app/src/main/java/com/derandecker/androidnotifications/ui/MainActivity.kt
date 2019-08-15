@@ -28,8 +28,9 @@ class MainActivity : AppCompatActivity() {
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val channelId = "$packageName.deranchannel"
         val notificationFullscreenIntent = Intent(this, FullscreenNotificationActivity::class.java)
-//        notificationFullscreenIntent.putExtra(INTENT_STRING_KEY, "Opened from Notification Shade")
-        val pendingContentIntent = PendingIntent.getActivity(this, 0, notificationFullscreenIntent, PendingIntent.FLAG_ONE_SHOT)
+        notificationFullscreenIntent.putExtra(INTENT_STRING_KEY, "Opened from Notification Shade")
+        val pendingContentIntent = PendingIntent.getActivity(this, 0,
+            notificationFullscreenIntent, PendingIntent.FLAG_CANCEL_CURRENT)
 
         btn_get_notification.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
