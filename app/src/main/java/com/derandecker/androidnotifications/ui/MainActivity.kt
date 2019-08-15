@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val NOTIFICATION_ID = 99
+        const val INTENT_STRING_KEY = "INTENT_STRING_KEY"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
