@@ -1,5 +1,6 @@
 package com.derandecker.androidnotifications.ui
 
+import android.app.Notification.Action.SEMANTIC_ACTION_THUMBS_UP
 import android.app.Notification.DEFAULT_ALL
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -27,10 +28,13 @@ class MainActivity : AppCompatActivity() {
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val channelId = "$packageName.deranchannel"
+
         val notificationFullscreenIntent = Intent(this, FullscreenNotificationActivity::class.java)
         notificationFullscreenIntent.putExtra(INTENT_STRING_KEY, "Opened from Notification Shade")
+
         val pendingContentIntent = PendingIntent.getActivity(this, 0,
-            notificationFullscreenIntent, PendingIntent.FLAG_CANCEL_CURRENT)
+            notificationFullscreenIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+
 
         btn_get_notification.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -51,6 +55,8 @@ class MainActivity : AppCompatActivity() {
                 .setColor(Color.GREEN)
                 .setDefaults(DEFAULT_ALL)
                 .setContentIntent(pendingContentIntent)
+                .addAction(R.drawable.abc_ic_menu_cut_mtrl_alpha,
+                    "Open", pendingContentIntent)
 
             notificationManager.notify(NOTIFICATION_ID, notificationBuilder.build())
 
