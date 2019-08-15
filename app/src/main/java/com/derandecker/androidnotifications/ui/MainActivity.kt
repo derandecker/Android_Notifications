@@ -1,8 +1,10 @@
 package com.derandecker.androidnotifications.ui
 
+import android.app.Notification.DEFAULT_ALL
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.graphics.Color
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -30,7 +32,13 @@ class MainActivity : AppCompatActivity() {
                 channel.description = description
 
                 val notificationBuilder = NotificationCompat.Builder(this, channelId)
-
+                    .setPriority(importance)
+                    .setContentTitle("High Importance")
+                    .setContentText("High Importance Notification - Deran Decker")
+                    .setSmallIcon(android.R.drawable.ic_dialog_info)
+                    .setColor(Color.RED)
+                    .setColorized(true)
+                    .setDefaults(DEFAULT_ALL)
             }
         }
     }
