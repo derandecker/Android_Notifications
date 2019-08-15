@@ -14,6 +14,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        const val NOTIFICATION_ID = 99
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,6 +43,8 @@ class MainActivity : AppCompatActivity() {
                     .setColor(Color.RED)
                     .setColorized(true)
                     .setDefaults(DEFAULT_ALL)
+
+                notificationManager.notify(NOTIFICATION_ID, notificationBuilder.build())
             }
         }
     }
