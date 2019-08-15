@@ -4,6 +4,7 @@ import android.app.Notification.DEFAULT_ALL
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
@@ -47,6 +48,10 @@ class MainActivity : AppCompatActivity() {
                 .setDefaults(DEFAULT_ALL)
 
             notificationManager.notify(NOTIFICATION_ID, notificationBuilder.build())
+
+            val intent = Intent(this, FullscreenNotificationActivity::class.java)
+            intent.putExtra(INTENT_STRING_KEY, "Notification created")
+            startActivity(intent)
         }
     }
 }
