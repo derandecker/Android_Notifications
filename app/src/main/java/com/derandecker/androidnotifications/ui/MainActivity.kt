@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.NotificationCompat
 import com.derandecker.androidnotifications.R
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -27,6 +28,9 @@ class MainActivity : AppCompatActivity() {
 
                 val channel = NotificationChannel(channelId, name, importance)
                 channel.description = description
+
+                val notificationBuilder = NotificationCompat.Builder(this, channelId)
+
             }
         }
     }
