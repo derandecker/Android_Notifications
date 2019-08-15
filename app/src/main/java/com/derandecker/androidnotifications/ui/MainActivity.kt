@@ -35,17 +35,18 @@ class MainActivity : AppCompatActivity() {
                 val channel = NotificationChannel(channelId, name, importance)
                 channel.description = description
 
-                val notificationBuilder = NotificationCompat.Builder(this, channelId)
-                    .setPriority(importance)
-                    .setContentTitle("High Importance")
-                    .setContentText("High Importance Notification - Deran Decker")
-                    .setSmallIcon(android.R.drawable.ic_dialog_info)
-                    .setColor(Color.RED)
-                    .setColorized(true)
-                    .setDefaults(DEFAULT_ALL)
-
-                notificationManager.notify(NOTIFICATION_ID, notificationBuilder.build())
             }
+
+            val notificationBuilder = NotificationCompat.Builder(this, channelId)
+                .setPriority(NotificationManager.IMPORTANCE_HIGH)
+                .setContentTitle("High Importance")
+                .setContentText("High Importance Notification - Deran Decker")
+                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setColor(Color.RED)
+                .setColorized(true)
+                .setDefaults(DEFAULT_ALL)
+
+            notificationManager.notify(NOTIFICATION_ID, notificationBuilder.build())
         }
     }
 }
