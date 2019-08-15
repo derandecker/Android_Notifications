@@ -1,5 +1,6 @@
 package com.derandecker.androidnotifications.ui
 
+import android.app.PendingIntent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -50,6 +51,7 @@ class FullscreenNotificationActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_fullscreen_notification)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
         val intentString: String = intent.getStringExtra(MainActivity.INTENT_STRING_KEY) ?: "No Data"
         fullscreen_content.text = intentString
