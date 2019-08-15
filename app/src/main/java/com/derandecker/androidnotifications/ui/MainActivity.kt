@@ -3,6 +3,7 @@ package com.derandecker.androidnotifications.ui
 import android.app.Notification.DEFAULT_ALL
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val channelId = "$packageName.deranchannel"
-
+        val pendingContentIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
 
         btn_get_notification.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -46,12 +47,13 @@ class MainActivity : AppCompatActivity() {
                 .setSmallIcon(android.R.drawable.ic_dialog_info)
                 .setColor(Color.GREEN)
                 .setDefaults(DEFAULT_ALL)
+                .setContentIntent(pendingContentIntent)
 
             notificationManager.notify(NOTIFICATION_ID, notificationBuilder.build())
 
             val intent = Intent(this, FullscreenNotificationActivity::class.java)
             intent.putExtra(INTENT_STRING_KEY, "Notification created")
-            startActivity(intent)
+//            startActivity(intent)
         }
     }
 }
